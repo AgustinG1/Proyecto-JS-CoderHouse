@@ -1,0 +1,93 @@
+header .navegador{ 
+    background-color: #820000 !important ;   
+}
+
+
+
+body {
+    background: #FAECD6 !important;
+    margin: 0%;
+    height: 100vh; }
+
+    .encabezado-img{
+        background-image: url(../images/mini_triples_de_miga-cover.jpg);
+        background-size: cover ;
+        height: 450px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: #F2DEBA;
+        
+    }
+    .encabezado-img p{
+        font-size: 30px;
+    }
+    .encabezado-img h1{
+        font-size: 50px;
+        padding: 15px 0;
+    
+    }
+
+    #sabores{
+    padding: 50px 0;
+}
+#sabores h2{
+    text-align: center;
+    font-weight: bold;
+    font-size: 30px;
+}
+#sabores .fila{
+    display: flex;
+    max-width: 1100px;
+    margin: auto;
+}
+#sabores .fila .item img{
+    max-width: 80px;
+}
+#sabores .fila .item{
+    display: flex;
+    align-items:center;
+    margin: 20px 10px;
+    padding: 5px;
+}
+#sabores .fila .item:hover{
+    background-color:#4E6C50;
+}
+#sabores .fila .item .info{
+    margin-left: 15px;
+    font-size: 14px;
+}
+#sabores button{
+    display: block;
+    width: fit-content;
+    margin: auto;
+    margin-top: 20px;
+    font-size: 20px;
+    border:none;
+    background-color: #4E6C50;
+    color: #fff;
+    padding: 7px 25px;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+
+
+.box__copyright{
+    max-width: 1200px;
+    margin: auto;
+    text-align: center;
+    padding: 0px 40px;
+}
+
+.box__copyright p{
+    margin-top: 20px;
+    color: #7a7a7a;
+}
+
+.box__copyright hr{
+    border: none;
+    height: 1px;
+    background-color: #6e6d6d;
+}
