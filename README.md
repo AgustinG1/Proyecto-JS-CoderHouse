@@ -2,25 +2,24 @@
 # Project Title
 
 Curso de Javascript
-Clase 4 - Funciones
+Proyecto tienda de Sandwich.
 ## Authors
 
 - Alberto Agustín García 
 
 ## Documentation
 
-El presente contiene algunas indicacioones sobre el contenido del proyecto usado como ejemplo.
+El programa comienza solicitando el nombre del usuario mediante un prompt y lo utiliza en la bienvenida del mensaje de alerta.
 
-Como ser los siguientes:
-* Introducción a las funcione.
-* Ventajas y Desventajas.
-* Funciones nombradas y anónimas.
-* Ambito de variables.
+Luego, se definen los diferentes tipos de sandwiches que ofrece la tienda y se calcula el precio promedio de todos ellos.
+
+Se carga una lista de encargos, donde se solicita el nombre del cliente, el tipo de sandwich, la cantidad, la fecha del encargo y se calcula el precio total.
+Se utiliza un switch para poner el precio correspondiente al tipo de sandwich seleccionado y se aplica un descuento del 30% al precio total.
+Ademas en consola muestra la fecha del encargo de sandwich.
 
 ## Feedback
 
 Este proyecto es solamente de uso para ejemplo , su estructura no necesariamente seria como va a ser en el proyecto final.
-## Used By
 
-En la carpeta js las lineas que no estan comentadas son mi intento de acoplar JS a mi proyecto de venta de Sandwich de miga. Espero algun consejo ya que se me dificulto introducir algo no invasivo para el usuario.
+
 

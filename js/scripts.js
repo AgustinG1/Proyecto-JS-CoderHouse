@@ -1,98 +1,139 @@
+let nombreUsuario;
 
-function pedirUsuario(){
-    let usuarioIngresado = prompt("Ingrese un usuario");
-    alert("Hola bienvenido a mi proyecto" + " " + usuarioIngresado + " " + "😁")
+function pedirUsuario() {
+  nombreUsuario = prompt("Ingrese su nombre");
+  alert(`Hola bienvenido a mi proyecto,  ${ nombreUsuario} 😁`);
 }
+
 pedirUsuario();
-    let bienvenido = "Hola bienvenido a mi proyecto de pagina 😁" ;
-    console.log(bienvenido);
+
+class Sandwich {
+  constructor(tipo, precio) {
+    this.tipo = tipo;
+    this.precio = precio;
+  }
+}
+
+const listaSandwiches = [
+  new Sandwich("Jamón y queso", 350),
+  new Sandwich("Verdura", 430),
+  new Sandwich("Crudo y roquefort", 675),
+];
+
+const precios = listaSandwiches.map(sandwich => sandwich.precio);
+const precioPromedio = precios.reduce((total, precio) => total + precio) / precios.length;
+console.log(`El precio promedio de los sandwiches es $${precioPromedio.toFixed(2)}`);
+
+const listaEncargos = [];
+
+function cargarEncargos() {
+  const cantidadEncargos = parseInt(prompt("¿Cuántos encargos desea cargar?"));
+
+  for (let i = 1; i <= cantidadEncargos; i++) {
+    let nombreCliente;
+    if (i === 1) {
+      nombreCliente = nombreUsuario;
+    } else {
+      nombreCliente = prompt(`Ingrese el nombre del cliente ${i}`);
+    }
+    const tipoSandwich = parseInt(prompt("¿Qué variedad desea? \n 1- Jamón y queso \n 2- Verdura \n 3- Crudo y roquefort"));
+    let precio;
+
+    switch (tipoSandwich) {
+      case 1:
+        precio = listaSandwiches[0].precio;
+        break;
+      case 2:
+        precio = listaSandwiches[1].precio;
+        break;
+      case 3:
+        precio = listaSandwiches[2].precio;
+        break;
+      default:
+        alert("La variedad seleccionada no es válida.");
+        continue;
+    }
+    
+    const cantidad = parseInt(prompt(`Ingrese la cantidad de sandwiches para el cliente ${i}`));
+    
+    const fecha = prompt("Ingrese la fecha del encargo (formato: dd/mm/yyyy)");
+
+    const porcentajeDescuento = 30;
+    const precioTotal = calcularPrecioTotal(precio, cantidad, porcentajeDescuento);
+
+    listaEncargos.push({
+      cliente: nombreCliente,
+      sandwich: tipoSandwich,
+      cantidad: cantidad,
+      precioTotal: precioTotal,
+      fecha: fecha
+    });
+  }
+}
+
+
+function calcularPrecioTotal(precio, cantidad, porcentajeDescuento) {
+  let precioTotal = precio * cantidad;
+
+  if (porcentajeDescuento > 0) {
+    const descuento = precioTotal * (porcentajeDescuento / 100);
+    precioTotal -= descuento;
+    alert(`Se ha aplicado un descuento del ${porcentajeDescuento}%. El precio total es $${precioTotal.toFixed(2)}.`);
+  } else {
+    alert(`El precio total es $${precioTotal.toFixed(2)}.`);
+  }
+
+  return precioTotal;
+}
+
+function verEncargosPorFecha(encargos) {
+  const fecha = prompt("Ingrese una fecha (formato: dd/mm/yyyy)");
+  const encargosFiltrados = encargos.filter(encargo => encargo.fecha === fecha);
+  console.log(`Encargos para la fecha ${fecha}:`);
+  console.table(encargosFiltrados);
+}
+
+cargarEncargos();
+console.log(listaEncargos);
+verEncargosPorFecha(listaEncargos);
+
+// Funcion de orden superior que filtra elementos de un array
+function filtrarElementosArray(array, filtro) {
+  return array.filter(elemento => filtro(elemento));
+}
+
+// Ejemplo de uso de la funcion de orden superior
+const numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const numerosPares = filtrarElementosArray(numeros, numero => numero % 2 === 0);
+console.log(numerosPares);
+
+function buscarEncargos(encargos, terminoBusqueda) {
+  return encargos.filter(encargo => {
+    const clienteEncontrado = encargo.cliente.toLowerCase().includes(terminoBusqueda.toLowerCase());
+    const sandwichEncontrado = listaSandwiches[encargo.sandwich-1].tipo.toLowerCase().includes(terminoBusqueda.toLowerCase());
+    return clienteEncontrado || sandwichEncontrado;
+  });
+}
+//
+function buscarYMostrarEncargos() {
+  const terminoBusqueda = prompt("Ingrese el nombre del cliente o tipo de sandwich a buscar:");
+  const encargosEncontrados = buscarEncargos(listaEncargos, terminoBusqueda);
+
+  if (encargosEncontrados.length > 0) {
+    const mensaje = `Se encontraron los siguientes encargos para el término de búsqueda "${terminoBusqueda}":\n\n`;
+    const detalleEncargos = encargosEncontrados.map(encargo => {
+      return `Cliente: ${encargo.cliente}\nSandwich: ${listaSandwiches[encargo.sandwich-1].tipo}\nCantidad: ${encargo.cantidad}\nPrecio total: $${encargo.precioTotal.toFixed(2)}\n`;
+    }).join("\n");
+
+    alert(mensaje + detalleEncargos);
+  } else {
+    alert(`No se encontraron encargos para el término de búsqueda "${terminoBusqueda}".`);
+  }
+}
+
+
+
 
 //////////
 
-
-let quiereInfoDescuento = prompt("¿Querés recibir descuentos y ofertas ?")
-const INFO_DESCUENTO = "SI";
-
-if( quiereInfoDescuento.toUpperCase() == INFO_DESCUENTO ) {
-        alert("Okey, te invitamos a que te registres a nuestra pagina para contar con estos beneficios 👍");
-}else{
-    alert("Bueno, que disfrutes de la pagina 😃 ");
-}
-
-
-let CuantasUnidadesQuiere = 0;
-do{
-    CuantasUnidadesQuiere = prompt("¿Cuantas unidades de sandwich de miga quieres?");
-    alert("Usted quiere" + CuantasUnidadesQuiere)
-    console.log(CuantasUnidadesQuiere);
-    console.log("El usuario quiere" + CuantasUnidadesQuiere + "unidades")
-} while (parseFloat(CuantasUnidadesQuiere));
-
-
-//////////////////////
-var cantidad, precio, desc, compra, pagar;
-
-precio = parseFloat(prompt("Ingresar precio"))
-cantidad = parseFloat(prompt("Ingresar cantidad"))
-
-compra = precio * cantidad;
-desc = compra * 0.25;
-pagar = compra - desc;
-
-console.log("el descuento es: " + desc );
-console.log("el total a pagar es: " + pagar)
-
-
-
-////////////////////
-let cuantosEncargosTenemos = parseFloat (prompt("Cuantos clientes tenemos hoy?"))
-
-for (let encargo = 1; encargo <= cuantosEncargosTenemos; encargo++){
-  let nombre = prompt("¿El pedido es para " + encargo + "?");
-  alert("El paciente " + nombre + ", tiene asignado el turno número " + encargo);
-  console.log("El cliente " + nombre + ", reservo " + encargo + " "+"unidades" );  }
-////////////////////
-
-
-/*
-const precioD = 500;
-for (const valor of precioD){
-    console.log("Precio sin impuestos: " + valor)
-    valor *= 1*25;
-    console.log("Precio total: " + valor);
-}  
-*/
-
-/*
-
-let sandwichMiga = prompt("De que sabor quieres los sandwich?");
-
-    alert("Usted quiere sabor: " + sandwichMiga );
-    
-let cuantosQuiere = parseInt (prompt("Cuantos unidades quiere?")); 
-
-    alert("La cantidad que usted quiere es: " + cuantosQuiere );
-
-
-if (true) {
-    console.log("Usted quiere comprar")
-}
  
-/////Descuento////
-function descuento(numero, porcentaje){
-    return numero - (numero * porcentaje / 100 - numero)
-    
-}/*
-
-
-var cantidad, precio, desc, compra, pagar;
-
-precio = parseFloat(prompt("Ingresar precio"))
-cantidad = parseFloat(prompt("Ingresar cantidad"))
-
-compra = precio * cantidad;
-desc = compra * 0.25;
-pagar = compra - desc;
-
-console.log("el descuento es: " + desc );
-console.log("el total a pagar es: " + pagar)*/
