@@ -1,93 +1,269 @@
-header .navegador{ 
-    background-color: #820000 !important ;   
+header .navegador {
+    background-color: #1F2D3D !important;
+    color: #FFFFFF; 
+}
+
+header .navegador li:hover {
+    background-color: #444444;
+    color: #FFFFFF;
+}
+header .navegador a:nth-child(even) {
+    color: #444444; 
+}
+
+header .navegador a:nth-child(odd) {
+    color: #A7BBC7;
 }
 
 
+.carousel-inner {
+    max-height: 49rem !important;
+}
 
+/* Estilos para los elementos en general */
 body {
-    background: #FAECD6 !important;
-    margin: 0%;
-    height: 100vh; }
-
-    .encabezado-img{
-        background-image: url(../images/mini_triples_de_miga-cover.jpg);
-        background-size: cover ;
-        height: 450px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        color: #F2DEBA;
-        
-    }
-    .encabezado-img p{
-        font-size: 30px;
-    }
-    .encabezado-img h1{
-        font-size: 50px;
-        padding: 15px 0;
-    
-    }
-
-    #sabores{
-    padding: 50px 0;
-}
-#sabores h2{
-    text-align: center;
-    font-weight: bold;
-    font-size: 30px;
-}
-#sabores .fila{
-    display: flex;
-    max-width: 1100px;
-    margin: auto;
-}
-#sabores .fila .item img{
-    max-width: 80px;
-}
-#sabores .fila .item{
-    display: flex;
-    align-items:center;
-    margin: 20px 10px;
-    padding: 5px;
-}
-#sabores .fila .item:hover{
-    background-color:#4E6C50;
-}
-#sabores .fila .item .info{
-    margin-left: 15px;
-    font-size: 14px;
-}
-#sabores button{
-    display: block;
-    width: fit-content;
-    margin: auto;
-    margin-top: 20px;
-    font-size: 20px;
-    border:none;
-    background-color: #4E6C50;
-    color: #fff;
-    padding: 7px 25px;
-    border-radius: 30px;
+    background-color: #E6E6E6;
+    color: #444444;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Estilos para el encabezado */
+  h2 {
+    color: #1F2D3D;
+  }
+  
+  /* Estilos para los íconos */
+  .icono {
+    background-color: #A7BBC7;
+  }
+  
+  /* Estilos para los botones */
+  button {
+    background-color: #1F2D3D;
+    color: #FFFFFF;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
     cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #444444;
+  }
+  
+  /* Estilos para el carrito */
+  .carrito {
+    background-color: #A7BBC7;
+    color: #000000;
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  .carrito h2 {
+    color: #FFFFFF;
+  }
+  
+  .carrito ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .carrito ul li {
+    margin-bottom: 10px;
+  }
+  
+  /* Estilos para el total */
+  .carrito p {
+    margin-top: 20px;
+  }
+  
+  .carrito #total {
+    font-weight: bold;
+  }
+  
+  /* Estilos generales */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  
+  /* Estilos de la sección de sabores */
+  #sabores {
+    background-color: #f7f7f7;
+    padding: 50px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  #sabores h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #1f2d3d;
+    text-align: center;
+  }
+  
+  .fila {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .item {
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    max-width: 300px;
+    width: 100%;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .item:hover {
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+  }
+  
+  .item .icono {
+    background-color: #a7bbc7;
+    height: 150px;
+    border-radius: 20px 20px 0 0;
+    position: relative;
+  }
+  
+  .item .icono::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(../images/sandwich.jpg);
+    background-size: contain;
+    background-position: center;
+    opacity: 0.5;
+  }
+  
+  .item .info {
+    padding: 20px;
+  }
+  
+  .item h3 {
+    font-size: 1.5rem;
+    color: #444444;
+    margin-bottom: 10px;
+  }
+  
+  .item p {
+    font-size: 1rem;
+    color: #444444;
+    margin-bottom: 10px;
+  }
+  
+  .agregar {
+    background-color: #1f2d3d;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 1rem;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  .agregar:hover {
+    background-color: #444444;
+  }
+  
+  
+
+  
+  /* Estilos del carrito */
+  .carrito {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 50px;
+    max-width: 600px;
+    width: 100%;
+    padding: 20px;
+    
+  }
+  
+  .carrito h2 {
+    font-size: 2rem;
+    color: #1f2d3d;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .carrito ul {
+    list-style-type: none;
+    margin-bottom: 20px;
+  }
+  
+  .carrito li {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .carrito li span {
+    font-weight: bold;
+    color: #1f2d3d;
+  }
+  
+  .carrito p {
+    font-size: 1.2rem;
+    color: #1f2d3d;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  #total {
+    font-weight: bold;
+  }
+  
+  #comprar {
+    background-color: #1f2d3d;
+    border: none;
+    border-radius: 5px;
+    color: #ffffff;
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  #comprar:hover {
+    background-color: #444444;
+  }
+  
+
+
+.wrapper-local {
+    width: 50%;
+    margin-left: 100px;
+    padding-top: 150px;
 }
 
-
-
-.box__copyright{
+.box__copyright {
     max-width: 1200px;
     margin: auto;
     text-align: center;
     padding: 0px 40px;
 }
 
-.box__copyright p{
+.box__copyright p {
     margin-top: 20px;
     color: #7a7a7a;
 }
 
-.box__copyright hr{
+hr {
     border: none;
     height: 1px;
-    background-color: #6e6d6d;
+    background-color: #404040;
 }

@@ -12,112 +12,115 @@
 
    <!-- navegador -->
   <header>
-    <nav class="navbar bg-body-tertiary fixed-top navegador">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">TROTAMUNDOS</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="offcanvas offcanvas-end navegador" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-            <div class="offcanvas-header">
-              <h5 class="offcanvas-title" id="offcanvasNavbarLabel">TROTAMUNDOS</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
-            <div class="offcanvas-body">
-              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="#">Inicio</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Productos</a>
-                </li>
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Nosotros
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Contacto</a></li>
-                  
-                    <li>
-                      <hr class="dropdown-divider">
-                    </li>
-                    <li><a class="dropdown-item" href="#">Promociones</a></li>
-                  </ul>
-                </li>
-              </ul>
-              <form class="d-flex mt-3" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Buscar</button>
-              </form>
-            </div>
-          </div>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top navegador">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Sandwich x</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contacto</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Productos</a>
+            </li>
+          </ul>
+          <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Buscar</button>
+          </form>
         </div>
-      </nav>   
+      </div>
+    </nav>
+    
   </header>
-  <div class="encabezado-img">
-		<p class="fw-bold">Pagina web de pan y sandwich</p>
-		<h1 class="fw-bold">TROTAMUNDOS</h1>
-		<p class="fw-bold">Lo mas rico del mercado</p>
-	</div>
+    <!-- Carrusel inicio -->
+    <div id="carousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active" data-bs-interval="3000">
+          <img src="./images/Portada.webp" class="d-block w-100" alt="">
+        </div>
+        
   
-  <!-- section -->
+        <div class="carousel-item" data-bs-interval="3000">
+          <img src="./images/salados-600x600.jpg" class="d-block w-100" alt="...">
+        </div>
+  
+  
+        <div class="carousel-item" data-bs-interval="3000">
+          <img src="./images/encabezado.jpg" class="d-block w-100" alt="...">
+        </div>
+  
+  
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carousel"  data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carousel"  data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  <!-- Section 1-->
+  <section class="d-flex flex-column justify-content-center align-items-center pt-5  text-center w-50 m-auto" id="intro">
+    <h1 class="p-3 fs-2 border-top border-3">Un local único para todas tus necesidades a la <span class="text-primary">Hora de comprar tu comida</span></h1>
+     <p class="p-3  fs-4">
+         <span class="text-primary">Sandwich x</span> es el unico local que ofrece el mejor servicio        
+     </p>   
+    </section>
+  
+  <!-- Section 2 -->
   <section id="sabores">
     <h2>Sabores</h2>
     <div class="fila">
-        <div class="item">
-            <div class="icono">
-            </div>
-            <div class="info">
-                <h3>Lorem</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-            </div>
+      <div class="item">
+        <div class="icono"></div>
+        <div class="info">
+          <h3>Jamon & Queso</h3>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+          <p>Precio: $500</p>
+          <button class="agregar">Agregar al carrito</button>
         </div>
-        <div class="item">
-            <div class="icono">
-            </div>
-            <div class="info">
-                <h3>Lorem</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-            </div>
+      </div>
+      <div class="item">
+        <div class="icono"></div>
+        <div class="info">
+          <h3>Atun</h3>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+          <p>Precio: $670</p>
+          <button class="agregar">Agregar al carrito</button>
         </div>
-        <div class="item">
-            <div class="icono">
-            </div>
-            <div class="info">
-                <h3>Lorem</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-            </div>
+      </div>
+      <div class="item">
+        <div class="icono"></div>
+        <div class="info">
+          <h3> Vegetariano</h3>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+          <p>Precio: $585</p>
+          <button class="agregar">Agregar al carrito</button>
         </div>
+      </div>
     </div>
+  
+    <div class="carrito">
+      <h2>Carrito</h2>
+      <ul></ul>
+      <p>Total: $<span id="total"></span></p>
+      <button id="comprar">Finalizar compra</button>
+      <p id="mensaje-compra"></p>
 
-    <div class="fila">
-        <div class="item">
-            <div class="icono">
-            </div>
-            <div class="info">
-                <h3>Lorem</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-            </div>
-        </div>
-        <div class="item">
-            <div class="icono">
-            </div>
-            <div class="info">
-                <h3>Lorem</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-            </div>
-        </div>
-        <div class="item">
-            <div class="icono">
-            </div>
-            <div class="info">
-                <h3>Lorem</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-            </div>
-        </div>
     </div>
-
-    <button>Ver Más</button>
+    
+  </section>
+  
+  </section>
+  
 
 </section>
  

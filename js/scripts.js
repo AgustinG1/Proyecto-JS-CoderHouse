@@ -1,139 +1,86 @@
-let nombreUsuario;
-
-function pedirUsuario() {
-  nombreUsuario = prompt("Ingrese su nombre");
-  alert(`Hola bienvenido a mi proyecto,  ${ nombreUsuario} 😁`);
-}
-
-pedirUsuario();
-
-class Sandwich {
-  constructor(tipo, precio) {
-    this.tipo = tipo;
-    this.precio = precio;
-  }
-}
-
-const listaSandwiches = [
-  new Sandwich("Jamón y queso", 350),
-  new Sandwich("Verdura", 430),
-  new Sandwich("Crudo y roquefort", 675),
+// JSON de productos
+const productos = [
+	{
+	  nombre: 'Sandwich de jamón y queso',
+	  descripcion: 'Clásico sandwich de jamón y queso.',
+	  precio: 500
+	},
+	{
+	  nombre: 'Sandwich de atún',
+	  descripcion: 'Sabroso sandwich de atún con lechuga y mayonesa.',
+	  precio: 670
+	},
+	{
+	  nombre: 'Sandwich vegetariano',
+	  descripcion: 'Saludable sandwich vegetariano con aguacate, lechuga, tomate y mayonesa de ajo.',
+	  precio: 585
+	}
 ];
 
-const precios = listaSandwiches.map(sandwich => sandwich.precio);
-const precioPromedio = precios.reduce((total, precio) => total + precio) / precios.length;
-console.log(`El precio promedio de los sandwiches es $${precioPromedio.toFixed(2)}`);
+// Obtener los botones "Agregar al carrito"
+const botonesAgregar = document.querySelectorAll('.agregar');
 
-const listaEncargos = [];
+// Obtener el carrito y el total
+const carrito = document.querySelector('.carrito ul');
+const totalHTML = document.querySelector('#total');
 
-function cargarEncargos() {
-  const cantidadEncargos = parseInt(prompt("¿Cuántos encargos desea cargar?"));
+// Inicializar el total en 0
+let total = 0;
 
-  for (let i = 1; i <= cantidadEncargos; i++) {
-    let nombreCliente;
-    if (i === 1) {
-      nombreCliente = nombreUsuario;
-    } else {
-      nombreCliente = prompt(`Ingrese el nombre del cliente ${i}`);
-    }
-    const tipoSandwich = parseInt(prompt("¿Qué variedad desea? \n 1- Jamón y queso \n 2- Verdura \n 3- Crudo y roquefort"));
-    let precio;
+// Agregar un listener de clic a cada botón "Agregar al carrito"
+botonesAgregar.forEach((boton, indice) => {
+	boton.addEventListener('click', () => {
+		// Obtener la información del producto seleccionado
+		const producto = productos[indice];
+		const nombre = producto.nombre;
+		const precio = producto.precio;
 
-    switch (tipoSandwich) {
-      case 1:
-        precio = listaSandwiches[0].precio;
-        break;
-      case 2:
-        precio = listaSandwiches[1].precio;
-        break;
-      case 3:
-        precio = listaSandwiches[2].precio;
-        break;
-      default:
-        alert("La variedad seleccionada no es válida.");
-        continue;
-    }
-    
-    const cantidad = parseInt(prompt(`Ingrese la cantidad de sandwiches para el cliente ${i}`));
-    
-    const fecha = prompt("Ingrese la fecha del encargo (formato: dd/mm/yyyy)");
+		// Crear un nuevo elemento en el carrito con la información del producto
+		const nuevoItem = document.createElement('li');
+		nuevoItem.innerHTML = `${nombre} - $${precio}`;
+		carrito.appendChild(nuevoItem);
 
-    const porcentajeDescuento = 30;
-    const precioTotal = calcularPrecioTotal(precio, cantidad, porcentajeDescuento);
+		// Sumar el precio del producto al total
+		total += precio;
+		
+		// Actualizar el total visualmente
+		totalHTML.textContent = total;
 
-    listaEncargos.push({
-      cliente: nombreCliente,
-      sandwich: tipoSandwich,
-      cantidad: cantidad,
-      precioTotal: precioTotal,
-      fecha: fecha
-    });
-  }
-}
+		// Guardar el producto en el carrito en el almacenamiento local
+		const carritoActual = JSON.parse(localStorage.getItem('carrito')) || [];
+		const nuevoProducto = { nombre: nombre, precio: precio };
+		carritoActual.push(nuevoProducto);
+		localStorage.setItem('carrito', JSON.stringify(carritoActual));
+	});
+});
+
+// Agregar un listener de clic al botón "Finalizar compra"
+const botonComprar = document.querySelector('#comprar');
+const mensajeCompra = document.querySelector('#mensaje-compra');
+
+botonComprar.addEventListener('click', () => {
+	// Mostrar mensaje de compra con el total
+	mensajeCompra.textContent = `Gracias por su compra! Total: $${total}`;
+;
 
 
-function calcularPrecioTotal(precio, cantidad, porcentajeDescuento) {
-  let precioTotal = precio * cantidad;
+	// Reiniciar el carrito y el total visualmente
+	carrito.innerHTML = '';
+	total = 0;
+	totalHTML.textContent = total;
 
-  if (porcentajeDescuento > 0) {
-    const descuento = precioTotal * (porcentajeDescuento / 100);
-    precioTotal -= descuento;
-    alert(`Se ha aplicado un descuento del ${porcentajeDescuento}%. El precio total es $${precioTotal.toFixed(2)}.`);
-  } else {
-    alert(`El precio total es $${precioTotal.toFixed(2)}.`);
-  }
+	// Limpiar el almacenamiento local
+	localStorage.removeItem('carrito');
+});
 
-  return precioTotal;
-}
-
-function verEncargosPorFecha(encargos) {
-  const fecha = prompt("Ingrese una fecha (formato: dd/mm/yyyy)");
-  const encargosFiltrados = encargos.filter(encargo => encargo.fecha === fecha);
-  console.log(`Encargos para la fecha ${fecha}:`);
-  console.table(encargosFiltrados);
-}
-
-cargarEncargos();
-console.log(listaEncargos);
-verEncargosPorFecha(listaEncargos);
-
-// Funcion de orden superior que filtra elementos de un array
-function filtrarElementosArray(array, filtro) {
-  return array.filter(elemento => filtro(elemento));
-}
-
-// Ejemplo de uso de la funcion de orden superior
-const numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-const numerosPares = filtrarElementosArray(numeros, numero => numero % 2 === 0);
-console.log(numerosPares);
-
-function buscarEncargos(encargos, terminoBusqueda) {
-  return encargos.filter(encargo => {
-    const clienteEncontrado = encargo.cliente.toLowerCase().includes(terminoBusqueda.toLowerCase());
-    const sandwichEncontrado = listaSandwiches[encargo.sandwich-1].tipo.toLowerCase().includes(terminoBusqueda.toLowerCase());
-    return clienteEncontrado || sandwichEncontrado;
-  });
-}
-//
-function buscarYMostrarEncargos() {
-  const terminoBusqueda = prompt("Ingrese el nombre del cliente o tipo de sandwich a buscar:");
-  const encargosEncontrados = buscarEncargos(listaEncargos, terminoBusqueda);
-
-  if (encargosEncontrados.length > 0) {
-    const mensaje = `Se encontraron los siguientes encargos para el término de búsqueda "${terminoBusqueda}":\n\n`;
-    const detalleEncargos = encargosEncontrados.map(encargo => {
-      return `Cliente: ${encargo.cliente}\nSandwich: ${listaSandwiches[encargo.sandwich-1].tipo}\nCantidad: ${encargo.cantidad}\nPrecio total: $${encargo.precioTotal.toFixed(2)}\n`;
-    }).join("\n");
-
-    alert(mensaje + detalleEncargos);
-  } else {
-    alert(`No se encontraron encargos para el término de búsqueda "${terminoBusqueda}".`);
-  }
-}
-
-
-
-
-//////////
-
- 
+// Cargar los productos del carrito desde el almacenamiento local al cargar la página
+window.addEventListener('load', () => {
+	const carritoActual = JSON.parse(localStorage.getItem('carrito')) || [];
+	carritoActual.forEach((producto) => {
+		const nuevoItem = document.createElement('li');
+		nuevoItem.innerHTML = `${producto.nombre} - $${producto.precio}`;
+		carrito.appendChild(nuevoItem);
+		total += producto.precio;
+	});
+	totalHTML.textContent = total;
+});
