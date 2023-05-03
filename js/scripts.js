@@ -7,12 +7,12 @@ const productos = [
 	},
 	{
 	  nombre: 'Sandwich de atún',
-	  descripcion: 'Sabroso sandwich de atún con lechuga y mayonesa.',
+	  descripcion: 'Sabroso sandwich de atún.',
 	  precio: 670
 	},
 	{
 	  nombre: 'Sandwich vegetariano',
-	  descripcion: 'Saludable sandwich vegetariano con aguacate, lechuga, tomate y mayonesa de ajo.',
+	  descripcion: 'Saludable sandwich vegetariano con palta, lechuga, tomate y mayonesa de ajo.',
 	  precio: 585
 	}
 ];
