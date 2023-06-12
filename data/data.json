@@ -1,0 +1,20 @@
+[
+    {
+      "id": 1,
+      "nombre": "Jamon & Queso",
+      "precio": 500
+    },
+    {
+      "id": 2,
+      "nombre": "Atun",
+      "precio": 670
+    },
+    {
+      "id": 3,
+      "nombre": "Vegetariano",
+      "precio": 585
+    }
+    
+  ]
+  
+  
